@@ -1,76 +1,39 @@
-Heroku Buildpack for Node.js
-============================
+Heroku Buildpack for awesomebox
+===============================
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Node.js apps.
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for [awesomebox](https://git.io/awesomebox).
 
-The buildpack will detect your app as Node.js if it has a `package.json` file in the root.  It will use npm to install your dependencies, and vendors a version of the Node.js runtime into your slug.
-
-Example Usage
--------------
-
-    $ ls
-    Procfile  package.json  web.js
-
-    $ heroku create
-
-    $ git push heroku master
-    ...
-    -----> Heroku receiving push
-    -----> Fetching custom buildpack
-    -----> Node.js app detected
-    -----> Vendoring node 0.4.7
-    -----> Installing dependencies with npm 1.0.8
-           express@2.1.0 ./node_modules/express
-           ├── mime@1.2.2
-           ├── qs@0.3.1
-           └── connect@1.6.2
-           Dependencies installed
-
-Node.js and npm versions
-------------------------
-
-You can specify the versions of Node.js and npm your application requires using `package.json`
-
-```json
-{
-  "name": "myapp",
-  "version": "0.0.1",
-  "engines": {
-    "node": "~0.10.13",
-    "npm": "~1.3.2"
-  }
-}
-```
-
-To list the available versions of Node.js and npm, see these manifests:
-
-- [heroku-buildpack-nodejs.s3.amazonaws.com/manifest.nodejs](http://heroku-buildpack-nodejs.s3.amazonaws.com/manifest.nodejs)
-- [heroku-buildpack-nodejs.s3.amazonaws.com/manifest.npm](http://heroku-buildpack-nodejs.s3.amazonaws.com/manifest.npm)
-
-Documentation
--------------
-
-For more information about buildpacks and Node.js, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
-- [Buildpack API](https://devcenter.heroku.com/articles/buildpack-api)
-
-Hacking
--------
-
-To make changes to this buildpack, fork it on Github. Push up changes to your fork, then create a new Heroku app to test it, or configure an existing app to use your buildpack:
+This makes deploying awesomebox apps to Heroku dead simple. From your project directory here's what you'll need to do.
 
 ```sh
-# Create a new Heroku app that uses your buildpack
-heroku create --buildpack <your-github-url>
+# Create a new Heroku app that uses this buildpack
+heroku create --buildpack https://github.com/mattinsler/heroku-buildpack-awesomebox
 
-# Configure an existing Heroku app to use your buildpack
-heroku config:set BUILDPACK_URL=<your-github-url>
-
-# You can also use a git branch!
-heroku config:set BUILDPACK_URL=<your-github-url>#your-branch
+# Push your code to Heroku using git
+git push heroku master
 ```
 
-For more detailed information about testing buildpacks, see [CONTRIBUTING.md](CONTRIBUTING.md)
+That's it!
+
+### Not a Heroku member?
+
+If you do not already have a Heroku account, [go sign up](https://www.heroku.com/). Then download and install the
+[Heroku Toolbelt](https://toolbelt.heroku.com/).
+
+### Not using git?
+
+We can fix that! [Install git](http://git-scm.com/book/en/Getting-Started-Installing-Git). Then, in your project
+directory, run this:
+
+```sh
+# Initialize git in the current directory
+git init
+
+# Add all of the files and directories in this directory
+git add .
+
+# Commit these files so that we can push this version to Heroku
+git commit -m 'Initial commit'
+```
+
+No you're ready to run the `git push heroku master` command from above.
