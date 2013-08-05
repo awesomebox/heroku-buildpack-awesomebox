@@ -174,11 +174,18 @@ INCLUDE_PATH="$VENDORED_NODE/include"
 export CPATH="$INCLUDE_PATH:$CPATH"
 export CPPPATH="$INCLUDE_PATH:$CPPPATH"
 
-# install dependencies with npm
-echo "-----> Installing dependencies with npm"
-run_npm "install --production"
-run_npm "rebuild"
-echo "Dependencies installed" | indent
+# install awesomebox with npm
+echo "-----> Installing awesomebox with npm"
+run_npm "install awesomebox --production"
+
+# install default Procfile
+echo "web: awesomebox --no-watch --no-hunt-port --no-open" > "$BUILD_DIR/Procfile"
+
+# # install dependencies with npm
+# echo "-----> Installing dependencies with npm"
+# run_npm "install --production"
+# run_npm "rebuild"
+# echo "Dependencies installed" | indent
 
 echo "-----> Building runtime environment"
 mkdir -p $BUILD_DIR/.profile.d
