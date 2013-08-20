@@ -1,7 +1,7 @@
 Heroku Buildpack for awesomebox
 ===============================
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for [awesomebox](https://git.io/awesomebox).
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for [awesomebox](https://get.awesomebox.es).
 
 This makes deploying awesomebox apps to Heroku dead simple. From your project directory here's what you'll need to do.
 
